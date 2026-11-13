@@ -5,7 +5,7 @@ import PhoneFrame from './components/PhoneFrame.jsx'
 import './App.css'
 
 const time = '22:17'
-const responseDesk = 'Response Desk'
+const responseDesk = 'Response\nDesk'
 
 function App() {
   const [unlocked, setUnlocked] = useState(false)

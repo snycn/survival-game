@@ -222,6 +222,7 @@ button {
   gap: 0.25rem;
   text-align: center;
   line-height: 1;
+  white-space: pre-line;
 }
 
 .app-tile__icon {
