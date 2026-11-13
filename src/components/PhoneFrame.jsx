@@ -1,4 +1,4 @@
-import frame from '../assets/Pixelized_Phone_2/Model_02/Black/empty.png'
+import frame from '../assets/Pixelized_Phone_2/Model_01/Black/empty.png'
 
 function PhoneFrame({ children, time }) {
   return (
