@@ -1,7 +1,9 @@
 
 function ConversationScreen() {
   return (
-    <div>hi</div>
+    <section className="phone-screen">
+      <div>hi</div>
+    </section>
   )
 }
 

@@ -61,7 +61,7 @@ button {
   /* The transparent opening is 142 × 261 at (9, 27) in the 160 × 336 sprite. */
   inset: calc(100% * 27 / 336) calc(100% * 9 / 160) calc(100% * 48 / 336);
   display: grid;
-  grid-template-rows: 1.625rem minmax(0, 1fr);
+  grid-template-rows: 1.625rem minmax(0, 1fr) auto;
   background: #151515;
 }
 
@@ -121,6 +121,32 @@ button {
   width: 2px;
   background: #bebebe;
   content: '';
+}
+
+.phone__nav-button {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  justify-self: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.phone__nav-button img {
+  opacity: 0.85;
+}
+
+.phone__nav-button:hover img {
+  opacity: 1;
+}
+
+.phone__nav-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
 }
 
 .phone-screen {

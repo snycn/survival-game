@@ -14,14 +14,27 @@ function App() {
 
   return (
     <main className="game">
-      <PhoneFrame time={screen !== 'lock' ? time : undefined}>
+      <PhoneFrame
+        time={screen !== 'lock' ? time : undefined}
+        onLock={screen === 'home' ? () => setScreen('lock') : undefined}
+        onHome={screen === 'response-desk' || screen === 'conversation'
+          ? () => setScreen('home')
+          : undefined}
+      >
         {screen === 'home' ? (
-          <HomeScreen appName={responseDesk} onOpenResponseDesk={() => setScreen('response-desk')}/>
+          <HomeScreen
+            appName={responseDesk}
+            onOpenResponseDesk={() => setScreen('response-desk')}
+          />
         ) : screen === 'lock' ? (
           <LockScreen time={time} appName={responseDesk} onUnlock={() => setScreen('home')} />
         ) : screen === 'response-desk' ? (
-          <ResponseDesk onOpenConversation={() => setScreen('conversation')} />
-        ) : <ConversationScreen />}
+          <ResponseDesk
+            onOpenConversation={() => setScreen('conversation')}
+          />
+        ) : (
+          <ConversationScreen />
+        )}
       </PhoneFrame>
     </main>
   )
