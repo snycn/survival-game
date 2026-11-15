@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import HomeScreen from './components/HomeScreen.jsx'
 import LockScreen from './components/LockScreen.jsx'
 import PhoneFrame from './components/PhoneFrame.jsx'
@@ -6,6 +6,7 @@ import ResponseDesk from './components/ResponseDesk.jsx'
 import ConversationScreen from './components/ConversationScreen.jsx'
 import { forestStory } from './data/forestStory.js'
 import { readStorySection } from './storyProgress.js'
+import { startBackgroundMusic } from './backgroundMusic.js'
 import './App.css'
 
 const time = '22:17'
@@ -14,6 +15,17 @@ const responseDesk = 'Response\nDesk'
 function App() {
   const [screen, setScreen] = useState('lock')
   const [progress, setProgress] = useState(() => readStorySection(forestStory, forestStory.startNode))
+
+  // Browsers block audio until the player interacts, so start the music on the first click or key press.
+  useEffect(() => {
+    const events = ['pointerdown', 'keydown']
+    function start() {
+      startBackgroundMusic()
+      events.forEach((name) => window.removeEventListener(name, start))
+    }
+    events.forEach((name) => window.addEventListener(name, start))
+    return () => events.forEach((name) => window.removeEventListener(name, start))
+  }, [])
 
   function sendReply(choice) {
     const nextSection = readStorySection(forestStory, choice.next)
