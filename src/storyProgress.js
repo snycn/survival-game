@@ -1,0 +1,18 @@
+// Collect a node's messages, following automatic links until a choice or ending.
+export function readStorySection(story, nodeId) {
+  const messages = []
+
+  while (true) {
+    const node = story.nodes[nodeId]
+
+    for (const message of node.messages) {
+      messages.push({ text: message.text, isPlayer: false })
+    }
+
+    if (!node.next) {
+      return { nodeId, messages }
+    }
+
+    nodeId = node.next
+  }
+}

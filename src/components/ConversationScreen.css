@@ -1,0 +1,123 @@
+.phone-screen.conversation-screen {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  background: #181818;
+}
+
+.conversation-screen__header,
+.conversation-screen__composer {
+  flex-shrink: 0;
+  padding: 10px var(--screen-padding);
+  background: #202020;
+}
+
+.conversation-screen__header {
+  border-bottom: 2px dotted #555;
+}
+
+.conversation-screen h1,
+.conversation-screen p {
+  margin: 0;
+  font-weight: normal;
+}
+
+.conversation-screen h1 {
+  font-size: 24px;
+}
+
+.conversation-screen__composer h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.conversation-screen__header p {
+  color: #bcbcbc;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.conversation-screen__messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px var(--screen-padding);
+}
+
+.conversation-screen__messages,
+.conversation-screen__composer {
+  scrollbar-width: thin;
+  scrollbar-color: #626262 #202020;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.message {
+  align-self: flex-start;
+  max-width: 88%;
+  padding: 8px 10px;
+  background: #303030;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.message--outgoing {
+  align-self: flex-end;
+  background: #d2d2cf;
+  color: #171717;
+}
+
+.message time {
+  display: block;
+  margin-top: 4px;
+  font-size: 16px;
+  text-align: right;
+}
+
+.conversation-screen__composer {
+  max-height: 60%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-top: 1px solid #383838;
+}
+
+.reply-picker summary,
+.reply-picker button {
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid #7b7b7b;
+  background: #303030;
+  color: inherit;
+  line-height: 1.2;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.reply-picker summary:hover,
+.reply-picker button:hover {
+  background: #414141;
+}
+
+.reply-picker summary:focus-visible,
+.reply-picker button:focus-visible,
+.conversation-screen__messages:focus-visible {
+  outline: 2px solid #f0f0ed;
+  outline-offset: -3px;
+}
+
+.reply-picker__options {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
