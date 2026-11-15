@@ -1,3 +1,4 @@
+import Button from './Button.jsx'
 import arrowIcon from '../assets/Pixelart_Generic_Icons_v1_by_ReffPixels/Small (24x24) PNG/White/Arrow Right_White.png'
 import messageIcon from '../assets/Pixelart_Generic_Icons_v1_by_ReffPixels/Small (24x24) PNG/White/Messages_White.png'
 
@@ -15,9 +16,9 @@ function LockScreen({ time, appName, onUnlock }) {
           <p>Incoming transmission</p>
         </div>
       </div>
-      <button className="unlock-button" type="button" onClick={onUnlock}>
+      <Button variant="solid" className="unlock-button" onClick={onUnlock}>
         Unlock <img className="pixel-art" src={arrowIcon} alt="" width={24} height={24} />
-      </button>
+      </Button>
     </section>
   )
 }

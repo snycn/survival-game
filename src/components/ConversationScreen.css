@@ -91,25 +91,16 @@
   border-top: 1px solid #383838;
 }
 
-.reply-picker summary,
+.reply-picker .toggle__label,
 .reply-picker button {
-  min-height: 44px;
   padding: 8px 10px;
-  border: 1px solid #7b7b7b;
-  background: #303030;
-  color: inherit;
+  border-color: #7b7b7b;
   line-height: 1.2;
   text-align: left;
   overflow-wrap: anywhere;
-  cursor: pointer;
 }
 
-.reply-picker summary:hover,
-.reply-picker button:hover {
-  background: #414141;
-}
-
-.reply-picker summary:focus-visible,
+.reply-picker .toggle__label:focus-visible,
 .reply-picker button:focus-visible,
 .conversation-screen__messages:focus-visible {
   outline: 2px solid #f0f0ed;

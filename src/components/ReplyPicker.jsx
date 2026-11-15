@@ -1,19 +1,21 @@
+import Button from './Button.jsx'
+import Toggle from './Toggle.jsx'
+
 function ReplyPicker({ replies, onChoose }) {
   return (
-    <details className="reply-picker">
-      <summary>Choose a reply…</summary>
+    <Toggle className="reply-picker" label="Choose a reply…">
       <div className="reply-picker__options">
         {replies.map((reply) => (
-          <button
-            type="button"
+          <Button
+            variant="solid"
             key={reply.id}
             onClick={() => onChoose(reply)}
           >
             {reply.text}
-          </button>
+          </Button>
         ))}
       </div>
-    </details>
+    </Toggle>
   )
 }
 
