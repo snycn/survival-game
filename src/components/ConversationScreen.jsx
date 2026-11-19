@@ -5,8 +5,9 @@ import './ConversationScreen.css'
 function ConversationScreen({ story, progress, time, onReply }) {
   const transcript = useRef(null)
   const node = story.nodes[progress.nodeId]
+  const isTyping = progress.pending.length > 0
 
-  // Scroll to the newest messages after a story choice.
+  // Keep newly delivered messages and the typing indicator in view.
   useEffect(() => {
     transcript.current.scrollTop = transcript.current.scrollHeight
   }, [progress])
@@ -36,11 +37,19 @@ function ConversationScreen({ story, progress, time, onReply }) {
               <time dateTime={time}>{time}</time>
             </li>
           ))}
+          {isTyping && (
+            <li className="message message--typing" key="typing">
+              <span aria-hidden="true">...</span>
+              <span className="sr-only">Caller is typing</span>
+            </li>
+          )}
         </ol>
       </div>
 
       <footer className="conversation-screen__composer" key={progress.nodeId}>
-        {node.ending ? (
+        {isTyping ? (
+          <p>Waiting for reply…</p>
+        ) : node.ending ? (
           <div role="status">
             <h2>{node.ending.title}</h2>
             <p>{node.ending.summary}</p>

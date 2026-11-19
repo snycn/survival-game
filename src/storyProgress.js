@@ -6,7 +6,11 @@ export function readStorySection(story, nodeId) {
     const node = story.nodes[nodeId]
 
     for (const message of node.messages) {
-      messages.push({ text: message.text, isPlayer: false })
+      messages.push({
+        text: message.text,
+        isPlayer: false,
+        typingTime: message.typingTime,
+      })
     }
 
     if (!node.next) {

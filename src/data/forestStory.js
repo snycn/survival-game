@@ -1,4 +1,4 @@
-// Draft dialogue. typingTime values are preserved but not used yet.
+// Draft dialogue. typingTime is the delay before a message, in milliseconds.
 export const forestStory = {
   id: 'forest',
   sender: '202-555-0134',

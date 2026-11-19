@@ -14,7 +14,31 @@ const responseDesk = 'Response\nDesk'
 
 function App() {
   const [screen, setScreen] = useState('lock')
-  const [progress, setProgress] = useState(() => readStorySection(forestStory, forestStory.startNode))
+  const [progress, setProgress] = useState(null)
+
+  // Deliver one pending message, then schedule the next after progress updates.
+  useEffect(() => {
+    if (progress === null || progress.pending.length === 0) return
+
+    const nextMessage = progress.pending[0]
+    const timer = setTimeout(() => {
+      setProgress({
+        nodeId: progress.nodeId,
+        messages: progress.messages.concat(nextMessage),
+        pending: progress.pending.slice(1),
+      })
+    }, (nextMessage.typingTime ?? 1000) * 2.025)
+
+    return () => clearTimeout(timer)
+  }, [progress])
+
+  function openConversation() {
+    if (progress === null) {
+      const opening = readStorySection(forestStory, forestStory.startNode)
+      setProgress({ nodeId: opening.nodeId, messages: [], pending: opening.messages })
+    }
+    setScreen('conversation')
+  }
 
   // Browsers block audio until the player interacts, so start the music on the first click or key press.
   useEffect(() => {
@@ -33,7 +57,8 @@ function App() {
 
     setProgress({
       nodeId: nextSection.nodeId,
-      messages: progress.messages.concat(playerMessage, nextSection.messages),
+      messages: progress.messages.concat(playerMessage),
+      pending: nextSection.messages,
     })
   }
 
@@ -57,7 +82,7 @@ function App() {
           <ResponseDesk
             story={forestStory}
             time={time}
-            onOpenConversation={() => setScreen('conversation')}
+            onOpenConversation={openConversation}
           />
         ) : (
           <ConversationScreen
