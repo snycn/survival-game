@@ -27,7 +27,7 @@ function App() {
         messages: progress.messages.concat(nextMessage),
         pending: progress.pending.slice(1),
       })
-    }, (nextMessage.typingTime ?? 1000) * 2.025)
+    }, (nextMessage.typingTime ?? 1000) * 3.0375)
 
     return () => clearTimeout(timer)
   }, [progress])
