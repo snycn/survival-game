@@ -112,3 +112,17 @@
   gap: 10px;
   margin-top: 10px;
 }
+
+.decision-recap {
+  padding-left: 20px;
+  line-height: 1.2;
+}
+
+.decision-recap li + li {
+  margin-top: 12px;
+}
+
+.restart-scenario {
+  width: 100%;
+  text-align: center;
+}

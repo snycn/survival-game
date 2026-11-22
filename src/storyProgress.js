@@ -1,4 +1,3 @@
-// Collect a node's messages, following automatic links until a choice or ending.
 export function readStorySection(story, nodeId) {
   const messages = []
 

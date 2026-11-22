@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react'
 import ReplyPicker from './ReplyPicker.jsx'
+import Button from './Button.jsx'
 import './ConversationScreen.css'
 
-function ConversationScreen({ story, progress, time, onReply }) {
+function ConversationScreen({ story, progress, time, onReply, onRestart }) {
   const transcript = useRef(null)
   const node = story.nodes[progress.nodeId]
   const isTyping = progress.pending.length > 0
 
-  // Keep newly delivered messages and the typing indicator in view.
   useEffect(() => {
     transcript.current.scrollTop = transcript.current.scrollHeight
   }, [progress])
@@ -53,6 +53,12 @@ function ConversationScreen({ story, progress, time, onReply }) {
           <div role="status">
             <h2>{node.ending.title}</h2>
             <p>{node.ending.summary}</p>
+            <ol className="decision-recap" aria-label="Decision recap">
+              {node.ending.recap.map((line) => <li key={line}>{line}</li>)}
+            </ol>
+            <Button variant="solid" className="restart-scenario" onClick={onRestart}>
+              Restart scenario
+            </Button>
           </div>
         ) : (
           <ReplyPicker
