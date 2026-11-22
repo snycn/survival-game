@@ -1,0 +1,44 @@
+.shift-briefing {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #181818;
+  line-height: 1.2;
+}
+
+.shift-briefing__header {
+  padding-bottom: 12px;
+  border-bottom: 2px dotted #555;
+}
+
+.shift-briefing__header p {
+  margin: 0 0 6px;
+  color: #bcbcbc;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.shift-briefing h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.shift-briefing__message p {
+  margin: 0 0 12px;
+}
+
+.shift-briefing__message p:last-child {
+  margin-bottom: 0;
+}
+
+.shift-briefing__note {
+  color: #bcbcbc;
+}
+
+.shift-briefing__begin {
+  flex-shrink: 0;
+  margin-top: auto;
+  text-align: center;
+}

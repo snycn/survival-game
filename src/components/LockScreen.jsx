@@ -13,7 +13,7 @@ function LockScreen({ time, appName, onUnlock }) {
         <img className="pixel-art" src={messageIcon} alt="" width={24} height={24} />
         <div>
           <p className="notification__source">{appName}</p>
-          <p>Incoming transmission</p>
+          <p>New assistance request</p>
         </div>
       </div>
       <Button variant="solid" className="unlock-button" onClick={onUnlock}>

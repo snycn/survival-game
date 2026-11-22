@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import HomeScreen from './components/HomeScreen.jsx'
+import ShiftBriefing from './components/ShiftBriefing.jsx'
 import LockScreen from './components/LockScreen.jsx'
 import PhoneFrame from './components/PhoneFrame.jsx'
 import ResponseDesk from './components/ResponseDesk.jsx'
@@ -13,7 +14,7 @@ const time = '22:17'
 const responseDesk = 'Response\nDesk'
 
 function App() {
-  const [screen, setScreen] = useState('lock')
+  const [screen, setScreen] = useState('briefing')
   const [progress, setProgress] = useState(null)
   const story = createForestStory(progress === null ? [] : progress.choices)
 
@@ -81,7 +82,9 @@ function App() {
           ? () => setScreen('home')
           : undefined}
       >
-        {screen === 'home' ? (
+        {screen === 'briefing' ? (
+          <ShiftBriefing onBeginShift={() => setScreen('lock')} />
+        ) : screen === 'home' ? (
           <HomeScreen
             appName={responseDesk}
             onOpenResponseDesk={() => setScreen('response-desk')}
